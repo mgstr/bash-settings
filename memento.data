@@ -1,5 +1,6 @@
-bash|Ctrl-l|clear screen, but keep command line
-terminal|F11|toggle full screen mode
-terminal|Ctrl-Shift-t|open new tab
-terminal|Ctrl-Shift-n|open new window
-terminal|Alt-1|switch to tab 1
+S	bash	Ctrl-l	S clear screen, but keep command line
+S	terminal	F11	toggle full screen mode
+S	terminal	Ctrl-Shift-t	open new tab
+S	terminal	Ctrl-Shift-n	open new window
+S	terminal	Alt-1	switch to tab 1
+P	discord	https://discordapp.com/download	group chat
