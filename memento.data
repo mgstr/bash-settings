@@ -1,4 +1,7 @@
-K	bash		Ctrl-l			clear screen, but keep command line
+K	bash (emacs)	Ctrl-l			clear screen, but keep command line
+K	bash (emacs)	Ctrl-w			delete from cursor to start of word
+K	bash (emacs)	Ctrl-a			go to the start of the command line
+K	bash (emacs)	Ctrl-e			go to the end of the command line
 C	bash		set -o vi		set readline library into vi mode
 C	bash		bind -m -vi-insert "\C-l":clear-screen	configure vi mode to use Ctrl-l for screen clean up
 P	discord		https://discordapp.com/download	free group chat
@@ -23,3 +26,20 @@ K	window		Ctrl+Win+Up	maximize current window size
 K	window		Ctrl+Win+Down	restore current window size
 K	window		Ctrl+Win+Left	make current window to take left half of the screen
 K	window		Ctrl+Win+Right	make current window to take right half of the screen
+K	terminal	Ctrl+-		zoom out
+K	terminal	Ctrl++		zoom in
+K	terminal	Ctrl+0		normal font size
+K	terminal	Ctrl+PgUp	switch to previous tab
+K	terminal	Ctrl+PgDn	switch to next tab
+K	terminal	Ctrl+Shift+PhUp	move tab to the left
+K	terminal	Ctrl+Shift+PhDn	move tab to the right
+K	terminal	Ctrl+Shift+c	copy selected text
+K	terminal	Ctrl+Shift+v	paste text from clipboard
+K	terminal	Ctrl+Shift+Up	scroll one line up
+K	terminal	Ctrl+Shift+Down	scroll one line down
+K	vim		Y		copy line to clipboard
+K	vim		p		paste clipboard after cursor (cursor remains on same place)
+K	vim		P		paste clibpoard before cursor (cursor remains on the same place)
+K	vim		gp		paste clipboard after cursor (cursor moves)
+K	vim		gP		paste clibpoard before cursor (cursor moves)
+
