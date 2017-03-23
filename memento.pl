@@ -1,17 +1,18 @@
 #!/usr/bin/perl
 use strict;
 
+my @masks;
 my $mask = '(';
 for (@ARGV) {
 	if (/^[+]/) {
 		$_ = "\\b".substr($_,1)."\\b";
 	}
 	$mask .= "$_|";
+	push @masks, $_;
 }
 chop($mask);
 $mask .= ')';
 $mask = '^' if $mask eq ')';
-
 my @results;
 my $maxTag = 0;
 my $maxKey = 0;
@@ -20,9 +21,12 @@ my $maxValue = 0;
 my $linux = $0 eq '/usr/local/sbin/m';
 
 open(OL, 'memento.data') || die ("Can't open memento.data");
+NEXTLINE:
 while (<OL>) {
-	next if !m/$mask/i;
 	next if m/^\s*$/;
+	foreach my $m (@masks) {
+		next NEXTLINE if !m/$m/;
+	}
 
 	my ($type, $tag, $key, $value) = split(/\t+/);
 	$maxTag = length($tag) if $maxTag < length($tag);
