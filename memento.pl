@@ -1,9 +1,10 @@
+#!/usr/bin/perl
 use strict;
 
 my $mask = '(';
 for (@ARGV) {
-	if ($mask =~ /^[+]/) {
-		die "+ detected";
+	if (/^[+]/) {
+		$_ = "\\b".substr($_,1)."\\b";
 	}
 	$mask .= "$_|";
 }
