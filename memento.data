@@ -14,4 +14,9 @@ K	terminal	Alt-<N>			switch to tab <N>
 C	vim			set number		show line numbers
 C	vim			syntax on		enable color syntax highlighting
 C	bash		wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz	maximize terminal window from terminnal
+S	vim		:%s/foo/bar/g	find each occurrence of 'foo' (in all lines), and replace it with 'bar'
+S	vim		:s/foo/bar/g	find each occurrence of 'foo' (in the current line only), and replace it with 'bar'
+S	vim		:%s/foo/bar/gc	replace each 'foo' to 'bar', but ask for confirmation first
+S	vim		:%s/\<foo\>/bar/gc	replace only whole words exactly matching 'foo' to 'bar'; ask for confirmation
+
 
