@@ -13,3 +13,5 @@ K	terminal	Ctrl-Shift-n	open new window
 K	terminal	Alt-<N>			switch to tab <N>
 C	vim			set number		show line numbers
 C	vim			syntax on		enable color syntax highlighting
+C	bash		wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz	maximize terminal window from terminnal
+
