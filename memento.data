@@ -1,6 +1,11 @@
-S	bash	Ctrl-l	S clear screen, but keep command line
-S	terminal	F11	toggle full screen mode
-S	terminal	Ctrl-Shift-t	open new tab
-S	terminal	Ctrl-Shift-n	open new window
-S	terminal	Alt-1	switch to tab 1
-P	discord	https://discordapp.com/download	group chat
+K	bash	Ctrl-l	clear screen, but keep command line
+K	terminal	F11	toggle full screen mode
+K	terminal	Ctrl-Shift-t	open new tab
+K	terminal	Ctrl-Shift-n	open new window
+K	terminal	Alt-1	switch to tab 1
+P	discord	https://discordapp.com/download	free group chat
+P	telegram	https://telegram.org/	free messenger app
+C	bash	set -o vi	set readline library into vi mode
+C	bash	bind -m -vi-insert "\C-l":clear-screen	configure vi mode to use C-l for screen clean up
+C	vim	set number	show line numbers
+C	vim	syntax on	enable color syntax highlighting
