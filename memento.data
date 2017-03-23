@@ -1,11 +1,15 @@
 K	bash		Ctrl-l			clear screen, but keep command line
+C	bash		set -o vi		set readline library into vi mode
+C	bash		bind -m -vi-insert "\C-l":clear-screen	configure vi mode to use Ctrl-l for screen clean up
+P	discord		https://discordapp.com/download	free group chat
+K	FAR			Ctrl-b			toggle help bar at the botom of the screen
+O	hashes		md5sum <file>	calculate MD5 sum for file content
+O	hashes		md5sum -c <file>	check hashes contained in the file
+S	hashes		cat <file> | openssl dgst -md5 [-hmac [secret]]	check hashes contained in the file with optional hmac calculation
+P	telegram	https://telegram.org/	free messenger app
 K	terminal	F11				toggle full screen mode
 K	terminal	Ctrl-Shift-t	open new tab
 K	terminal	Ctrl-Shift-n	open new window
 K	terminal	Alt-<N>			switch to tab <N>
-P	discord		https://discordapp.com/download	free group chat
-P	telegram	https://telegram.org/	free messenger app
-C	bash		set -o vi		set readline library into vi mode
-C	bash		bind -m -vi-insert "\C-l":clear-screen	configure vi mode to use Ctrl-l for screen clean up
 C	vim			set number		show line numbers
 C	vim			syntax on		enable color syntax highlighting
