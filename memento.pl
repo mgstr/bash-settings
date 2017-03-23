@@ -19,7 +19,7 @@ my $maxValue = 0;
 
 open(OL, 'memento.data') || die ("Can't open memento.data");
 while (<OL>) {
-	next if !m/$mask/;
+	next if !m/$mask/i;
 
 	my ($type, $tag, $key, $value) = split(/\t+/);
 	$maxTag = length($tag) if $maxTag < length($tag);
