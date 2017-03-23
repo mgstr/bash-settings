@@ -17,9 +17,12 @@ my $maxTag = 0;
 my $maxKey = 0;
 my $maxValue = 0;
 
+my $linux = $0 eq '/usr/local/sbin/m';
+
 open(OL, 'memento.data') || die ("Can't open memento.data");
 while (<OL>) {
 	next if !m/$mask/i;
+	next if m/^\s*$/;
 
 	my ($type, $tag, $key, $value) = split(/\t+/);
 	$maxTag = length($tag) if $maxTag < length($tag);
@@ -31,5 +34,8 @@ close(OL);
 
 for (@results) {
 	my ($type, $tag, $key, $value) = split(/\t+/);
+	$key = "\e[0;32m$key\e[0m";
+	$key =~ s/$mask/\e[0;31m\1\e[0;32m/g if $linux;
+	$value =~ s/$mask/\e[0;31m\1\e[0m/g if $linux;
 	printf("%*s  %*s  %s", -$maxTag, $tag, -$maxKey, $key, $value)
 }
