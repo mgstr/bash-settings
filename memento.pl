@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 use strict;
 
+my $maxKeyLimit = 32;
+
 my @masks;
 my $mask = '(';
 for (@ARGV) {
@@ -25,7 +27,7 @@ NEXTLINE:
 while (<OL>) {
 	next if m/^\s*$/;
 	foreach my $m (@masks) {
-		next NEXTLINE if !m/$m/;
+		next NEXTLINE if !m/$m/i;
 	}
 
 	my ($type, $tag, $key, $value) = split(/\t+/);
@@ -36,12 +38,21 @@ while (<OL>) {
 }
 close(OL);
 
+$maxKey = $maxKeyLimit if $maxKey > $maxKeyLimit;
+
 for (sort without_type @results) {
 	my ($type, $tag, $key, $value) = split(/\t+/);
+	my $keyLen = length($key);
+	my $valueLen = length($value);
+
 	$key = "\e[0;32m$key\e[0m";
 	$key =~ s/$mask/\e[0;31m\1\e[0;32m/g if $linux;
+	printf("%*s  %s", -$maxTag, $tag, $key);
+	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
+		print(' ');
+	}
 	$value =~ s/$mask/\e[0;31m\1\e[0m/g if $linux;
-	printf("%*s  %*s  %s", -$maxTag, $tag, -$maxKey, $key, $value)
+	print(" $value");
 }
 
 sub without_type() {
