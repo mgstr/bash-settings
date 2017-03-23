@@ -36,10 +36,16 @@ while (<OL>) {
 }
 close(OL);
 
-for (@results) {
+for (sort without_type @results) {
 	my ($type, $tag, $key, $value) = split(/\t+/);
 	$key = "\e[0;32m$key\e[0m";
 	$key =~ s/$mask/\e[0;31m\1\e[0;32m/g if $linux;
 	$value =~ s/$mask/\e[0;31m\1\e[0m/g if $linux;
 	printf("%*s  %*s  %s", -$maxTag, $tag, -$maxKey, $key, $value)
+}
+
+sub without_type() {
+	my ($a1, $a2) = split(/\t+/, $a, 2);
+	my ($b1, $b2) = split(/\t+/, $b, 2);
+	return $a2 cmp $b2;
 }
