@@ -18,5 +18,5 @@ S	vim		:%s/foo/bar/g	find each occurrence of 'foo' (in all lines), and replace i
 S	vim		:s/foo/bar/g	find each occurrence of 'foo' (in the current line only), and replace it with 'bar'
 S	vim		:%s/foo/bar/gc	replace each 'foo' to 'bar', but ask for confirmation first
 S	vim		:%s/\<foo\>/bar/gc	replace only whole words exactly matching 'foo' to 'bar'; ask for confirmation
-
+K	chrome		F6		go to address bar
 
