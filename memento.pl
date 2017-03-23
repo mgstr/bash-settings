@@ -21,7 +21,7 @@ open(OL, 'memento.data') || die ("Can't open memento.data");
 while (<OL>) {
 	next if !m/$mask/;
 
-	my ($type, $tag, $key, $value) = split(/\t/);
+	my ($type, $tag, $key, $value) = split(/\t+/);
 	$maxTag = length($tag) if $maxTag < length($tag);
 	$maxKey = length($key) if $maxKey < length($key);
 	$maxValue = length($value) if $maxValue < length($value);
@@ -30,6 +30,6 @@ while (<OL>) {
 close(OL);
 
 for (@results) {
-	my ($type, $tag, $key, $value) = split(/\t/);
+	my ($type, $tag, $key, $value) = split(/\t+/);
 	printf("%*s  %*s  %s", -$maxTag, $tag, -$maxKey, $key, $value)
 }
