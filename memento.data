@@ -1,3 +1,5 @@
+P	utils-ui	bless		hexdecimal editor for Linux
+O	apt-get		apt-get install -y <package>	install package without confirmation message
 O	xxd		xxd <file>		dump file content in hex
 O	xxd		xxd -b <file>		dump file content in binary
 O	hexdump		hexdump -C <file>	dump file content in hex
@@ -10,12 +12,12 @@ K	bash (emacs)	Ctrl-a			go to the start of the command line
 K	bash (emacs)	Ctrl-e			go to the end of the command line
 C	bash		set -o vi		set readline library into vi mode
 C	bash		bind -m vi-insert "\C-l":clear-screen	configure vi mode to use Ctrl-l for screen clean up
-P	discord		https://discordapp.com/download	free group chat
+P	utils-ui	discord		free group chat https://discordapp.com/download
 K	FAR			Ctrl-b			toggle help bar at the botom of the screen
 O	hashes		md5sum <file>	calculate MD5 sum for file content
 O	hashes		md5sum -c <file>	check hashes contained in the file
 S	hashes		cat <file> | openssl dgst -md5 [-hmac [secret]]	check hashes contained in the file with optional hmac calculation
-P	telegram	https://telegram.org/	free messenger app
+P	utils-ui	telegram	free messenger app https://telegram.org/
 K	terminal	F11				toggle full screen mode
 K	terminal	Ctrl-Shift-t	open new tab
 K	terminal	Ctrl-Shift-n	open new window
