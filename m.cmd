@@ -1,1 +1,1 @@
-@perl memento.pl %*
+@perl memento.pl %* | colorize
