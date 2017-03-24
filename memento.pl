@@ -1,7 +1,9 @@
 #!/usr/bin/perl
 use strict;
 
+show_help() if $#ARGV == -1;
 show_help() if $#ARGV == 0 and $ARGV[0] eq '--help';
+@ARGV = ('^') if $#ARGV == 0 and $ARGV[0] eq '--all';
 
 my $maxKeyLimit = 32;
 
@@ -70,6 +72,8 @@ Usage: memento.pl <filter>, where
 filter:
    text - search text anywhere (part of the word are OK)
   +text - search text as word
+
+to show all onelines use '--all' option.
 
 results are highlighted using VT100 coloring codes:
   text that match filter is highlighted by \e[0;31mred\e[0m
