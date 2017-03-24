@@ -20,8 +20,6 @@ my $maxTag = 0;
 my $maxKey = 0;
 my $maxValue = 0;
 
-my $linux = $0 eq '/usr/local/sbin/m';
-
 open(OL, 'memento.data') || die ("Can't open memento.data");
 NEXTLINE:
 while (<OL>) {
@@ -46,12 +44,12 @@ for (sort without_type @results) {
 	my $valueLen = length($value);
 
 	$key = "\e[0;32m$key\e[0m";
-	$key =~ s/$mask/\e[0;31m\1\e[0;32m/g if $linux;
+	$key =~ s/$mask/\e[0;31m\1\e[0;32m/gi;
 	printf("%*s  %s", -$maxTag, $tag, $key);
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
 	}
-	$value =~ s/$mask/\e[0;31m\1\e[0m/g if $linux;
+	$value =~ s/$mask/\e[0;31m\1\e[0m/gi;
 	print(" $value");
 }
 
