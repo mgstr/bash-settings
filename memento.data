@@ -1,3 +1,7 @@
+I	assembler	DI,SI,DX,CX,R8,R9	registers to pass fuction first 6 parameters
+O	objdump		-d <file>	display assembly content
+O	objdump		-s <file>	show file symbols table
+P	utils-ui	010 editor	pofessional text and hex editing with Binary Templates technology
 P	utils-ui	bless		hexdecimal editor for Linux
 O	apt-get		apt-get install -y <package>	install package without confirmation message
 O	xxd		xxd <file>		dump file content in hex
