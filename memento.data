@@ -1,3 +1,7 @@
+O	xxd		xxd <file>		dump file content in hex
+O	xxd		xxd -b <file>		dump file content in binary
+O	hexdump		hexdump -C <file>	dump file content in hex
+O	ln		ln [-s] existing target	create a link with target name to the existing file
 P	chrome plugins	vimium			https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb
 P	chrome plugins	tabs outliner		https://chrome.google.com/webstore/detail/tabs-outliner/eggkanocgddhmamlbiijnphhppkpkmkl
 K	bash (emacs)	Ctrl-l			clear screen, but keep command line
@@ -5,7 +9,7 @@ K	bash (emacs)	Ctrl-w			delete from cursor to start of word
 K	bash (emacs)	Ctrl-a			go to the start of the command line
 K	bash (emacs)	Ctrl-e			go to the end of the command line
 C	bash		set -o vi		set readline library into vi mode
-C	bash		bind -m -vi-insert "\C-l":clear-screen	configure vi mode to use Ctrl-l for screen clean up
+C	bash		bind -m vi-insert "\C-l":clear-screen	configure vi mode to use Ctrl-l for screen clean up
 P	discord		https://discordapp.com/download	free group chat
 K	FAR			Ctrl-b			toggle help bar at the botom of the screen
 O	hashes		md5sum <file>	calculate MD5 sum for file content
