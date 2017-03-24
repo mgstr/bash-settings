@@ -1,3 +1,4 @@
+P	chrome plugins	tabs outliner		https://chrome.google.com/webstore/detail/tabs-outliner/eggkanocgddhmamlbiijnphhppkpkmkl
 K	bash (emacs)	Ctrl-l			clear screen, but keep command line
 K	bash (emacs)	Ctrl-w			delete from cursor to start of word
 K	bash (emacs)	Ctrl-a			go to the start of the command line
