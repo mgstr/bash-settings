@@ -47,6 +47,7 @@ for (sort without_type @results) {
 	my $keyLen = length($key);
 	my $valueLen = length($value);
 
+	$tag =~ s/$mask/\e[0;31m\1\e[0;32m/gi;
 	$key = "\e[0;32m$key\e[0m";
 	$key =~ s/$mask/\e[0;31m\1\e[0;32m/gi;
 	printf("%*s  %s", -$maxTag, $tag, $key);
