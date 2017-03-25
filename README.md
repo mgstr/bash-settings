@@ -1,6 +1,7 @@
-# bash-settings
-my custom bash settings
+# CW2017
 
-## Copy/Paste in the Gnome terminal
-You can copy text in the Gnome terminal just by selecting it.
-To paste it in the command line press MIDDLE button on the mouse.
+Tools and utilities that can be useful for CW2017 competition.
+
+* memento - command line tool to quickly find oneliner information
+* * colorizer - Windows 10 utility to enable VT100 emulation (for colors in the CMD)
+
