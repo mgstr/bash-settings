@@ -1,3 +1,9 @@
+P	utils-cli	readelf		read ELF iformation (alternative to objdump, on low level)
+S	utils-cli	dd skip=102567 count=253 if=input.binary of=output.binary bs=1		extract part of the bin file
+I	ELF		INTERP header	interpreter responsible for loading program dynamic libraries
+S	disassembly	ldd <file>			show dependencies needed for <file>
+S	disassembly	objdump -p <file> | grep NEEDED	show dependencies needed for <file>
+P	utils-cli	xclip		work with clipboard on Linux
 I	assembler	DI,SI,DX,CX,R8,R9	registers to pass fuction first 6 parameters
 O	objdump		-d <file>	display assembly content
 O	objdump		-s <file>	show file symbols table
