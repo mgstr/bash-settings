@@ -5,6 +5,7 @@ show_help() if $#ARGV == -1;
 show_help() if $#ARGV == 0 and $ARGV[0] eq '--help';
 @ARGV = ('^') if $#ARGV == 0 and $ARGV[0] eq '--all';
 
+my $data = $ENV{'MEMENTO_DATA'} || 'memento.data';
 my $maxKeyLimit = 32;
 
 my @masks;
@@ -24,7 +25,7 @@ my $maxTag = 0;
 my $maxKey = 0;
 my $maxValue = 0;
 
-open(OL, 'memento.data') || die ("Can't open memento.data");
+open(OL, $data) || die ("Can't open $data");
 NEXTLINE:
 while (<OL>) {
 	next if m/^\s*$/;
