@@ -1,6 +1,10 @@
 #!/usr/bin/perl
 use strict;
 
+my $RED	= "\e[0;31m";
+my $GREEN = "\e[0;32m";
+my $EOC = "\e[0m";
+
 show_help() if $#ARGV == -1;
 show_help() if $#ARGV == 0 and $ARGV[0] eq '--help';
 @ARGV = ('^') if $#ARGV == 0 and $ARGV[0] eq '--all';
@@ -48,14 +52,14 @@ for (sort without_type @results) {
 	my $keyLen = length($key);
 	my $valueLen = length($value);
 
-	$tag =~ s/$mask/\e[0;31m\1\e[0;32m/gi;
-	$key = "\e[0;32m$key\e[0m";
-	$key =~ s/$mask/\e[0;31m\1\e[0;32m/gi;
+	$tag =~ s/$mask/$RED\1$GREEN/gi;
+	$key = "$GREEN$key$EOC";
+	$key =~ s/$mask/$RED\1$GREEN/gi;
 	printf("%*s  %s", -$maxTag, $tag, $key);
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
 	}
-	$value =~ s/$mask/\e[0;31m\1\e[0m/gi;
+	$value =~ s/$mask/$RED\1$EOC/gi;
 	print(" $value");
 }
 
@@ -78,8 +82,8 @@ filter:
 to show all onelines use '--all' option.
 
 results are highlighted using VT100 coloring codes:
-  text that match filter is highlighted by \e[0;31mred\e[0m
-  info is highlightd by \e[0;32mgreen\e[0m
+  text that match filter is highlighted by ${RED}red${EOC}
+  info is highlightd by ${GREEN}green${EOC}
 On linux terminal will interprete them, on Windows you need colorize.exe (Windows 10 only) to display colors.
 
 information is stored in the .memento file(s) in the tab separated format:
