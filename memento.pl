@@ -70,7 +70,7 @@ sub show_help()
   die <<"HELP";
 memento - search among one-liners
 
-Usage: memento.pl <filter>, where 
+Usage: memento.pl <filters>, where 
 filter:
    text - search text anywhere (part of the word are OK)
   +text - search text as word
@@ -82,16 +82,14 @@ results are highlighted using VT100 coloring codes:
   info is highlightd by \e[0;32mgreen\e[0m
 On linux terminal will interprete them, on Windows you need colorize.exe (Windows 10 only) to display colors.
 
-information is stored in the memento.data file in the tab separated format:
-  <type>\t<program name>\t<info>\t<description>, where
-  type - is one letter, that is now shown in the output, but still can be used as filter (use + notation, like +K)
-         intened to separate infomation type: K - for keyboard shorcuts, S - for cmd samples etc
-  program name - the name of the program (or area like hashing) where info is applied
+information is stored in the .memento file(s) in the tab separated format:
+  <info>\\t<description>\\t<tags>, where
   info - shortcut key, url, configuration, command line options, sample etc
   description - text that explains info
+  tags - text that used in filtering, but not shown in the CLI output
 
 Exmaples:
-  memento +K terminal
+  memento terminal +shortcut
     find all keyboard shortcuts for 'terminal' program
   memento http
     find all info containing URLs
