@@ -29,7 +29,9 @@ my $maxTag = 0;
 my $maxKey = 0;
 my $maxValue = 0;
 
-process_file('memento.data');
+while(<$dataFolder/*.memento>) {
+	process_file($_);
+}
 
 $maxKey = $maxKeyLimit if $maxKey > $maxKeyLimit;
 
