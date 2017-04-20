@@ -80,6 +80,7 @@
                 <configuration>
                     <archive>
                         <manifest>
+                            <manifestVersion>1.0</manifestVersion>
                             <mainClass>org.telegram.Main</mainClass>
                         </manifest>
                     </archive>
