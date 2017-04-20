@@ -9,7 +9,7 @@ show_help() if $#ARGV == -1;
 show_help() if $#ARGV == 0 and $ARGV[0] eq '--help';
 @ARGV = ('^') if $#ARGV == 0 and $ARGV[0] eq '--all';
 
-my $data = $ENV{'MEMENTO_DATA'} || 'memento.data';
+my $dataFolder = '.';
 my $maxKeyLimit = 32;
 
 my @masks;
@@ -29,21 +29,7 @@ my $maxTag = 0;
 my $maxKey = 0;
 my $maxValue = 0;
 
-open(OL, $data) || die ("Can't open $data");
-NEXTLINE:
-while (<OL>) {
-	next if m/^\s*$/;
-	foreach my $m (@masks) {
-		next NEXTLINE if !m/$m/i;
-	}
-
-	my ($type, $tag, $key, $value) = split(/\t+/);
-	$maxTag = length($tag) if $maxTag < length($tag);
-	$maxKey = length($key) if $maxKey < length($key);
-	$maxValue = length($value) if $maxValue < length($value);
-	push @results, $_;
-}
-close(OL);
+process_file('memento.data');
 
 $maxKey = $maxKeyLimit if $maxKey > $maxKeyLimit;
 
@@ -61,6 +47,25 @@ for (sort without_type @results) {
 	}
 	$value =~ s/$mask/$RED\1$EOC/gi;
 	print(" $value");
+}
+
+sub process_file() {
+  my $data = shift;
+	open(OL, $data) || die ("Can't open $data");
+	NEXTLINE:
+	while (<OL>) {
+		next if m/^\s*$/;
+		foreach my $m (@masks) {
+			next NEXTLINE if !m/$m/i;
+		}
+
+		my ($type, $tag, $key, $value) = split(/\t+/);
+		$maxTag = length($tag) if $maxTag < length($tag);
+		$maxKey = length($key) if $maxKey < length($key);
+		$maxValue = length($value) if $maxValue < length($value);
+		push @results, $_;
+	}
+	close(OL);
 }
 
 sub without_type() {
