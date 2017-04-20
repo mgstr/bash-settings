@@ -2,6 +2,7 @@ package org.memento.updatehandlers;
 
 import com.google.common.base.Strings;
 import org.memento.BotConfig;
+import org.memento.client.SocketClient;
 import org.memento.commands.HelpCommand;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
@@ -9,8 +10,6 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.logging.BotLogger;
-
-import static org.memento.commands.SearchCommand.processSearch;
 
 /**
  * This handler mainly works with commands to demonstrate the Commands feature of the API
@@ -48,7 +47,7 @@ public class CommandHandlers extends TelegramLongPollingCommandBot {
             if (message.hasText()) {
                 SendMessage responseMessage = new SendMessage();
                 responseMessage.setChatId(message.getChatId());
-                String res = processSearch(message.getText());
+                String res = sendSearchRequest(message.getText());
                 if (Strings.isNullOrEmpty(res)) {
                     res = "An error occured, please check bot logs";
                 }
@@ -60,6 +59,10 @@ public class CommandHandlers extends TelegramLongPollingCommandBot {
                 }
             }
         }
+    }
+
+    public static String sendSearchRequest(String arguments) {
+        return new SocketClient().send(arguments);
     }
 
     @Override
