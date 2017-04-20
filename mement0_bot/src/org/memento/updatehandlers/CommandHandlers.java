@@ -1,14 +1,16 @@
 package org.memento.updatehandlers;
 
+import com.google.common.base.Strings;
 import org.memento.BotConfig;
 import org.memento.commands.HelpCommand;
-import org.memento.commands.SearchCommand;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import org.telegram.telegrambots.logging.BotLogger;
+
+import static org.memento.commands.SearchCommand.processSearch;
 
 /**
  * This handler mainly works with commands to demonstrate the Commands feature of the API
@@ -23,7 +25,6 @@ public class CommandHandlers extends TelegramLongPollingCommandBot {
      * Constructor.
      */
     public CommandHandlers() {
-        register(new SearchCommand());
         HelpCommand helpCommand = new HelpCommand(this);
         register(helpCommand);
 
@@ -42,16 +43,18 @@ public class CommandHandlers extends TelegramLongPollingCommandBot {
 
     @Override
     public void processNonCommandUpdate(Update update) {
-
         if (update.hasMessage()) {
             Message message = update.getMessage();
             if (message.hasText()) {
-                SendMessage echoMessage = new SendMessage();
-                echoMessage.setChatId(message.getChatId());
-                echoMessage.setText("Hey heres your message:\n" + message.getText());
-
+                SendMessage responseMessage = new SendMessage();
+                responseMessage.setChatId(message.getChatId());
+                String res = processSearch(message.getText());
+                if (Strings.isNullOrEmpty(res)) {
+                    res = "An error occured, please check bot logs";
+                }
+                responseMessage.setText(res);
                 try {
-                    sendMessage(echoMessage);
+                    sendMessage(responseMessage);
                 } catch (TelegramApiException e) {
                     BotLogger.error(LOGTAG, e);
                 }

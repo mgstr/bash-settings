@@ -25,23 +25,12 @@ public class SearchCommand extends BotCommand {
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] arguments) {
-
         StringBuilder filters = new StringBuilder();
         if (arguments != null && arguments.length > 0) {
             filters.append(String.join(" ", arguments));
         }
-        Process process;
-        String searchResult;
-        try {
-            process = Runtime.getRuntime().exec("@perl memento.pl %* | colorize");
-            if (process.waitFor() != 0) {
-                BotLogger.error(LOGTAG, "memento.pl exit code is non-zero");
-            }
-            searchResult = extractOutput(process);
-        } catch (IOException | InterruptedException e) {
-            BotLogger.error(LOGTAG, e);
-            return;
-        }
+        String searchResult = processSearch(filters.toString());
+        if (searchResult == null) return;
         SendMessage answer = new SendMessage();
         answer.setChatId(chat.getId().toString());
         answer.setText(searchResult);
@@ -53,7 +42,23 @@ public class SearchCommand extends BotCommand {
         }
     }
 
-    private String extractOutput(Process process) throws IOException {
+    public static String processSearch(String arguments) {
+        Process process;
+        String searchResult;
+        try {
+            process = Runtime.getRuntime().exec("@perl memento.pl "  + arguments + " | colorize");
+            if (process.waitFor() != 0) {
+                BotLogger.error(LOGTAG, "memento.pl exit code is non-zero");
+            }
+            searchResult = extractOutput(process);
+        } catch (IOException | InterruptedException e) {
+            BotLogger.error(LOGTAG, e);
+            return null;
+        }
+        return searchResult;
+    }
+
+    private static String extractOutput(Process process) throws IOException {
         StringBuffer sb = new StringBuffer();
         BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
