@@ -9,6 +9,11 @@ show_help() if $#ARGV == -1;
 show_help() if $#ARGV == 0 and $ARGV[0] eq '--help';
 @ARGV = ('^') if $#ARGV == 0 and $ARGV[0] eq '--all';
 
+if ($#ARGV == 0 and $ARGV[0] eq '--') {
+	$_ = <STDIN>;
+	@ARGV = split(/\s+/);
+}
+
 my $dataFolder = '.';
 my $maxKeyLimit = 32;
 
