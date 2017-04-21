@@ -1,4 +1,4 @@
-version: '0.1'
+version: '2.1'
 services:
   backend:
     image: govnocod/memento:backend_0.1
@@ -10,5 +10,7 @@ services:
       - "80:7878"
     links:
       - backend
+    env_file:
+      - mement0_bot/bot.env
     environment:
       - TELEGRAM_TOKEN
