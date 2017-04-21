@@ -12,6 +12,11 @@ show_help() if $#ARGV == 0 and $ARGV[0] eq '--help';
 if ($#ARGV == 0 and $ARGV[0] eq '--') {
 	$_ = <STDIN>;
 	@ARGV = split(/\s+/);
+
+	# don't show colors in this mode
+	$RED = '';
+	$GREEN = '';
+	$EOC = '';
 }
 
 # Look for data files in the same folder where perl script is located
