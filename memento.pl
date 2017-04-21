@@ -40,20 +40,21 @@ while(<$dataFolder/*.memento>) {
 
 $maxKey = $maxKeyLimit if $maxKey > $maxKeyLimit;
 
-for (sort without_type @results) {
-	my ($type, $tag, $key, $value) = split(/\t+/);
+for (sort @results) {
+	my ($key, $value, $tag) = split(/\t+/);
 	my $keyLen = length($key);
 	my $valueLen = length($value);
 
 	$tag =~ s/$mask/$RED\1$GREEN/gi;
 	$key = "$GREEN$key$EOC";
 	$key =~ s/$mask/$RED\1$GREEN/gi;
-	printf("%*s  %s", -$maxTag, $tag, $key);
+	$value =~ s/$mask/$RED\1$EOC/gi;
+	#printf("%18s  %s\n", $key, $value);
+	print $key;
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
 	}
-	$value =~ s/$mask/$RED\1$EOC/gi;
-	print(" $value");
+	print(" $value\n");
 }
 
 sub process_file() {
@@ -66,7 +67,7 @@ sub process_file() {
 			next NEXTLINE if !m/$m/i;
 		}
 
-		my ($type, $tag, $key, $value) = split(/\t+/);
+		my ($key, $value, $tag) = split(/\t+/);
 		$maxTag = length($tag) if $maxTag < length($tag);
 		$maxKey = length($key) if $maxKey < length($key);
 		$maxValue = length($value) if $maxValue < length($value);
