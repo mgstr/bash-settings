@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+  #backend:
+   # image: govnocod/mementobackend
+  bot:
+    image: govnocod/mementobot
+    ports:
+      - "80:7878"
+#    links:
+ #   - backend
+    environment:
+    - TOKEN
