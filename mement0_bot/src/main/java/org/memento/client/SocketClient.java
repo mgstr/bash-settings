@@ -1,5 +1,7 @@
 package org.memento.client;
 
+import com.google.common.base.Strings;
+import org.apache.commons.codec.binary.StringUtils;
 import org.memento.BotConfig;
 import org.telegram.telegrambots.logging.BotLogger;
 
@@ -18,8 +20,12 @@ public class SocketClient {
     public String send(String request) {
         String response = null;
 
+        String port = System.getenv("SERVER_PORT");
+        if (Strings.isNullOrEmpty(port)) {
+            throw new RuntimeException("SERVER_PORT environment variable not set but required");
+        }
         try (
-                Socket socket = new Socket(BotConfig.SERVER_HOST, BotConfig.SERVER_PORT);
+                Socket socket = new Socket(BotConfig.SERVER_HOST, Integer.valueOf(port));
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                 InputStream in = socket.getInputStream()
         ) {
