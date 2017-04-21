@@ -72,6 +72,10 @@ public class CommandHandlers extends TelegramLongPollingCommandBot {
 
     @Override
     public String getBotToken() {
-        return System.getenv("TELEGRAM_TOKEN");
+        String token = System.getenv("TELEGRAM_TOKEN");
+        if (Strings.isNullOrEmpty(token)) {
+            throw new RuntimeException("TELEGRAM_TOKEN is not set but required.");
+        }
+        return token;
     }
 }
