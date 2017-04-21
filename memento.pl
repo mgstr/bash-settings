@@ -14,7 +14,12 @@ if ($#ARGV == 0 and $ARGV[0] eq '--') {
 	@ARGV = split(/\s+/);
 }
 
-my $dataFolder = '.';
+# Look for data files in the same folder where perl script is located
+my $dataFolder = $0;
+$dataFolder = `readlink $dataFolder` if -l $dataFolder;
+$dataFolder =~ s![^/\\]+$!!;
+$dataFolder =~ s![/\\]$!!;
+
 my $maxKeyLimit = 32;
 
 my @masks;
