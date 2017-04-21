@@ -23,7 +23,7 @@ public class SocketClient {
             throw new RuntimeException("SERVER_PORT environment variable not set but required");
         }
         try (
-                Socket socket = new Socket(BotConfig.SERVER_HOST, Integer.valueOf(port));
+                Socket socket = new Socket(BotConfig.SERVER_HOST, BotConfig.SERVER_PORT);
                 PrintWriter out = new PrintWriter(socket.getOutputStream());
                 InputStream in = socket.getInputStream()
         ) {
