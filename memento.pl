@@ -34,8 +34,8 @@ my $maxTag = 0;
 my $maxKey = 0;
 my $maxValue = 0;
 
-while(<$dataFolder/*.memento>) {
-	process_file($_);
+while(my $fileName = <$dataFolder/*.memento>) {
+	process_file($fileName);
 }
 
 $maxKey = $maxKeyLimit if $maxKey > $maxKeyLimit;
