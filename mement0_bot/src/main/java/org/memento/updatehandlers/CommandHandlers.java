@@ -24,19 +24,19 @@ public class CommandHandlers extends TelegramLongPollingCommandBot {
      * Constructor.
      */
     public CommandHandlers() {
-        HelpCommand helpCommand = new HelpCommand(this);
-        register(helpCommand);
+//        HelpCommand helpCommand = new HelpCommand(this);
+//        register(helpCommand);
 
         registerDefaultAction((absSender, message) -> {
             SendMessage commandUnknownMessage = new SendMessage();
             commandUnknownMessage.setChatId(message.getChatId());
-            commandUnknownMessage.setText("The command '" + message.getText() + "' is not known by this bot. Here comes some help ");
+            commandUnknownMessage.setText("The command '" + message.getText() + "' is not known by this bot.");
             try {
                 absSender.sendMessage(commandUnknownMessage);
             } catch (TelegramApiException e) {
                 BotLogger.error(LOGTAG, e);
             }
-            helpCommand.execute(absSender, message.getFrom(), message.getChat(), new String[] {});
+//            helpCommand.execute(absSender, message.getFrom(), message.getChat(), new String[] {});
         });
     }
 
