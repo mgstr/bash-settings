@@ -1,4 +1,5 @@
 # this is a pile of information that didn't fit into other categories
+docker ps -aq | perl -ne "`docker rm -f $_`"    remove all docker containers
 socat TCP-LISTEN:7878,reuseaddr,fork,pktinfo EXEC:"/shared/memento.pl --",pty   run console app as network app on socket
 armitage						metasploit GUI	program
 netstat -anp					display all ports along with pid information	sample
