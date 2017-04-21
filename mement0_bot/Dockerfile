@@ -1,6 +1,6 @@
 FROM maven:3.5-jdk-8
 
-LABEL version="0.1"
+LABEL version="0.3"
 
 RUN mkdir -p /src/src/
 COPY src/ /src/src
