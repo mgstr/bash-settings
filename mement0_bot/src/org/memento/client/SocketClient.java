@@ -36,7 +36,7 @@ public class SocketClient {
             return response;
         } catch (IOException e) {
             BotLogger.error(LOGTAG, e);
-            throw new RuntimeException(e);
+            return null;
         }
     }
 
