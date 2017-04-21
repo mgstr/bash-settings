@@ -63,7 +63,8 @@ sub process_file() {
 	NEXTLINE:
 	while (<OL>) {
 		chomp;
-		next if m/^\s*$/;
+		next if m/^\s*$/;					# ignore empty lines
+		$_ = $_ . "\t$data";			# pretend that file tags are added to each file line
 		foreach my $m (@masks) {
 			next NEXTLINE if !m/$m/i;
 		}
