@@ -1,1 +1,1 @@
-docker run --env-file=bot.env mementobot
+docker run --rm -i -t --env-file=bot.env  mementobot

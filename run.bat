@@ -1,1 +1,1 @@
-docker run mementobackend
+docker run --rm -i -t mementobackend

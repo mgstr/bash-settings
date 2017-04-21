@@ -5,7 +5,6 @@ package org.memento;
  */
 public class BotConfig {
     public static final String COMMANDS_USER = "mement0_bot";
-
     public static final int SERVER_PORT = 42;
     public static final String SERVER_HOST = "backend";
 }
