@@ -1,11 +1,11 @@
-version: '2.1'
+version: '0.1'
 services:
   backend:
-   image: govnocod/mementobackend
-   ports:
-     - "81:7878"
+    image: govnocod/memento:backend_0.1
+    ports:
+      - "81:7878"
   bot:
-    image: govnocod/mementobot
+    image: govnocod/memento:bot_0.1
     ports:
       - "80:7878"
     links:
