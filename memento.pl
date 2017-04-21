@@ -54,7 +54,7 @@ for (sort @results) {
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
 	}
-	print(" $value");
+	print(" $value\n");
 }
 
 sub process_file() {
@@ -62,6 +62,7 @@ sub process_file() {
 	open(OL, $data) || die ("Can't open $data");
 	NEXTLINE:
 	while (<OL>) {
+		chomp;
 		next if m/^\s*$/;
 		foreach my $m (@masks) {
 			next NEXTLINE if !m/$m/i;
