@@ -54,7 +54,7 @@ for (sort @results) {
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
 	}
-	print(" $value\n");
+	print(" $value");
 }
 
 sub process_file() {
