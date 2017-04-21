@@ -49,7 +49,6 @@ for (sort @results) {
 	$key = "$GREEN$key$EOC";
 	$key =~ s/$mask/$RED\1$GREEN/gi;
 	$value =~ s/$mask/$RED\1$EOC/gi;
-	#printf("%18s  %s\n", $key, $value);
 	print $key;
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
@@ -63,7 +62,9 @@ sub process_file() {
 	NEXTLINE:
 	while (<OL>) {
 		chomp;
-		next if m/^\s*$/;
+		next if m/^\s*$/;					# ignore empty lines
+		next if m/^#/;						# ignore comment lines
+		$_ = $_ . "\t$data";			# pretend that file tags are added to each file line
 		foreach my $m (@masks) {
 			next NEXTLINE if !m/$m/i;
 		}

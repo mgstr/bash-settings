@@ -1,3 +1,4 @@
+# keyboard shortcuts for various programs
 Ctrl-l			bash (emacs): clear screen, but keep command line
 Ctrl-w			bash (emacs): delete from cursor to start of word
 Ctrl-a			bash (emacs): go to the start of the command line
