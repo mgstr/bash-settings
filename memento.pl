@@ -49,7 +49,6 @@ for (sort @results) {
 	$key = "$GREEN$key$EOC";
 	$key =~ s/$mask/$RED\1$GREEN/gi;
 	$value =~ s/$mask/$RED\1$EOC/gi;
-	#printf("%18s  %s\n", $key, $value);
 	print $key;
 	for (my $len = $keyLen; $len <= $maxKey; ++$len) {
 		print(' ');
