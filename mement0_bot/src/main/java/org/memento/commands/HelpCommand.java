@@ -17,7 +17,7 @@ import org.telegram.telegrambots.logging.BotLogger;
 public class HelpCommand extends BotCommand {
 
     private static final String LOGTAG = "HELPCOMMAND";
-    public static final String HELP_TEXT = "These are the registered commands for this Bot:\n/s <filters>, where\n" +
+    public static final String HELP_TEXT = "These are the registered commands for this Bot:\n/s filters, where\n" +
             "filter:\n" +
             "   text - search text anywhere (part of the word are OK)\n" +
             "  +text - search text as word\n" +
@@ -51,9 +51,7 @@ public class HelpCommand extends BotCommand {
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] strings) {
 
-        StringBuilder helpMessageBuilder = new StringBuilder("<b>Help</b>\n");
-        helpMessageBuilder.append(HELP_TEXT);
-
+        StringBuilder helpMessageBuilder = new StringBuilder(HELP_TEXT);
         for (BotCommand botCommand : commandRegistry.getRegisteredCommands()) {
             helpMessageBuilder.append(botCommand.toString()).append("\n\n");
         }
