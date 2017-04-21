@@ -76,12 +76,6 @@ sub process_file() {
 	close(OL);
 }
 
-sub without_type() {
-	my ($a1, $a2) = split(/\t+/, $a, 2);
-	my ($b1, $b2) = split(/\t+/, $b, 2);
-	return $a2 cmp $b2;
-}
-
 sub show_help()
 {
   die <<"HELP";
