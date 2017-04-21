@@ -1,12 +1,10 @@
 version: '2.1'
 services:
   backend:
-    image: govnocod/memento:backend_0.2
+    image: mgstr/memento-cli:latest
   bot:
-    image: govnocod/memento:bot_0.2
+    image: mgstr/memento-bot:latest
     links:
       - backend
-    env_file:
-      - mement0_bot/bot.env
     environment:
       - TELEGRAM_TOKEN
