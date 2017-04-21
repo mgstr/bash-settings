@@ -35,4 +35,3 @@ wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz	maximize terminal win
 :s/foo/bar/g	vim: find each occurrence of 'foo' (in the current line only), and replace it with 'bar'	sample
 :%s/foo/bar/gc	vim: replace each 'foo' to 'bar', but ask for confirmation first	sample
 :%s/\<foo\>/bar/gc	vim: replace only whole words exactly matching 'foo' to 'bar'; ask for confirmation	sample
-		
