@@ -16,6 +16,7 @@ if ($#ARGV == 0 and $ARGV[0] eq '--') {
 
 # Look for data files in the same folder where perl script is located
 my $dataFolder = $0;
+$dataFolder = `readlink $dataFolder` if -l $dataFolder;
 $dataFolder =~ s![^/\\]+$!!;
 $dataFolder =~ s![/\\]$!!;
 
