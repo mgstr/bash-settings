@@ -22,8 +22,12 @@ public class SocketClient {
         if (Strings.isNullOrEmpty(port)) {
             throw new RuntimeException("SERVER_PORT environment variable not set but required");
         }
+        String host = System.getenv("SERVER_HOST");
+        if (Strings.isNullOrEmpty(host)) {
+            throw new RuntimeException("SERVER_HOST environment variable not set but required");
+        }
         try (
-                Socket socket = new Socket(BotConfig.SERVER_HOST, Integer.valueOf(port));
+                Socket socket = new Socket(host, Integer.valueOf(port));
                 PrintWriter out = new PrintWriter(socket.getOutputStream());
                 InputStream in = socket.getInputStream()
         ) {
