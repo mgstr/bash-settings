@@ -1,0 +1,30 @@
+Ctrl-l			bash (emacs): clear screen, but keep command line
+Ctrl-w			bash (emacs): delete from cursor to start of word
+Ctrl-a			bash (emacs): go to the start of the command line
+Ctrl-e			bash (emacs): go to the end of the command line
+Ctrl-b			FAR: toggle help bar at the botom of the screen
+F11				terminal: toggle full screen mode
+Ctrl-Shift-t	terminal: open new tab
+Ctrl-Shift-n	terminal: open new window
+Alt-<N>			terminal: switch to tab <N>
+F6				go to address bar
+Ctrl+Win+Up		maximize current window size
+Ctrl+Win+Down	restore current window size
+Ctrl+Win+Left	make current window to take left half of the screen
+Ctrl+Win+Right	make current window to take right half of the screen
+Ctrl+-			terminal: zoom out
+Ctrl++			terminal: zoom in
+Ctrl+0			terminal: normal font size
+Ctrl+PgUp		terminal: switch to previous tab
+Ctrl+PgDn		terminal: switch to next tab
+Ctrl+Shift+PhUp	terminal: move tab to the left
+Ctrl+Shift+PhDn	terminal: move tab to the right
+Ctrl+Shift+c	terminal: copy selected text
+Ctrl+Shift+v	terminal: paste text from clipboard
+Ctrl+Shift+Up	terminal: scroll one line up
+Ctrl+Shift+Down	terminal: scroll one line down
+Y				vim: copy line to clipboard
+p				vim: paste clipboard after cursor (cursor remains on same place)
+P				vim: paste clibpoard before cursor (cursor remains on the same place)
+gp				vim: paste clipboard after cursor (cursor moves)
+gP				vim: paste clibpoard before cursor (cursor moves)
