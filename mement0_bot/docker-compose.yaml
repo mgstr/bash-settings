@@ -1,12 +1,14 @@
 version: '2.1'
 services:
-  #backend:
-   # image: govnocod/mementobackend
+  backend:
+   image: govnocod/mementobackend
+   ports:
+     - "81:7878"
   bot:
     image: govnocod/mementobot
     ports:
       - "80:7878"
-#    links:
- #   - backend
+    links:
+      - backend
     environment:
-    - TOKEN
+      - TELEGRAM_TOKEN
